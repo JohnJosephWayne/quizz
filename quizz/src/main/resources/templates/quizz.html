@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Quizz</title>
+</head>
+<body>
+<h1>Quizz</h1>
+<p>Bienvenue, <span th:text="${username}">utilisateur</span> !</p>
+<form th:action="@{/quizz}" method="get">
+    <!-- Affichage de la question -->
+    <div th:if="${question}">
+        <p th:text="${question.text}"></p>
+        <ul>
+            <!-- Affichage des réponses -->
+            <li th:each="answer : ${question.correctAnswer}">
+                <input type="radio" th:id="${'answer_' + __${answer}__}" name="selectedAnswer" th:value="${answer}">
+                <label th:for="${'answer_' + __${answer}__}" th:text="${answer}"></label>
+            </li>
+            <li th:each="answer : ${question.incorrectAnswers}">
+                <input type="radio" th:id="${'answer_' + __${answer}__}" name="selectedAnswer" th:value="${answer}">
+                <label th:for="${'answer_' + __${answer}__}" th:text="${answer}"></label>
+            </li>
+        </ul>
+        <!-- Passage à la prochaine question ou fin du quiz -->
+        <input type="hidden" name="id" th:value="${question.id + 1}">
+        <button type="submit">Question suivante</button>
+    </div>
+    <!-- Fin du quiz -->
+    <div th:unless="${question}">
+        <p>Merci d'avoir répondu à toutes les questions !</p>
+        <a th:href="@{/accueil/end}">Terminer</a>
+    </div>
+</form>
+</body>
+</html>
