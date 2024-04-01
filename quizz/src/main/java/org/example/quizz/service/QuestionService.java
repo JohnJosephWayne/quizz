@@ -1,24 +1,20 @@
-package org.example.secu.service;
+package org.example.quizz.service;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.secu.model.Question;
-import org.springframework.beans.factory.annotation.Value;
+import org.example.quizz.model.Question;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
-
 import java.io.IOException;
 import java.util.List;
 
 @Service
 public class QuestionService {
 
-    @Value("classpath:question.json")
-    private Resource resourceFile;
-
     public List<Question> getQuestions() throws IOException {
+        Resource resourceFile = new ClassPathResource("C:\\Users\\user\\IdeaProjects\\quizz\\quizz\\src\\main\\resources\\templates\\json\\question.json");
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Question> questions = objectMapper.readValue(resourceFile.getFile(), new TypeReference<>() {
-        });
-        return questions;
+        return objectMapper.readValue(resourceFile.getInputStream(), new TypeReference<>() {});
     }
 }

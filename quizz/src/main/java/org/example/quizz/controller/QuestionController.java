@@ -1,30 +1,36 @@
-package org.example.secu.controller;
+package org.example.quizz.controller;
 
-import org.example.secu.model.Question;
-import org.example.secu.service.QuestionService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import jakarta.servlet.http.HttpSession;
+import org.example.quizz.model.Question;
+import org.example.quizz.service.QuestionService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
 import java.util.List;
 
-@RestController
-@RequestMapping("/quizz")
+@Controller
 public class QuestionController {
+    protected QuestionService questionService;
 
-    @Autowired
-    private QuestionService questionService;
-
-    @GetMapping("/questions")
-    public ResponseEntity<List<Question>> getQuestions() throws IOException {
-        List<Question> questions = questionService.getQuestions();
-        return ResponseEntity.ok(questions);
+    public QuestionController(QuestionService questionService) {
+        this.questionService = questionService;
     }
 
-    @PostMapping("/submit")
-    public ResponseEntity<String> submitQuiz(@RequestBody List<Question> questions) {
-        // Logique de vérification des réponses ici
-        return ResponseEntity.ok("Réponses traitées avec succès");
+    @PostMapping("/quizz")
+    public String showQuiz(HttpSession session, Model model) {
+        if (session.getAttribute("username") == null) {
+            return "redirect:/index";
+        }
+        try {
+            List<Question> questions = questionService.getQuestions();
+            model.addAttribute("questions");
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+        return "quizz";
     }
 }

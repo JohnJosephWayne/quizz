@@ -1,4 +1,4 @@
-package org.example.secu.model;
+package org.example.quizz.model;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package org.example.secu;
+package org.example.quizz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
