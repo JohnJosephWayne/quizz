@@ -1,29 +1,28 @@
 package org.example.quizz.controller;
 
 import jakarta.servlet.http.HttpSession;
+import org.example.quizz.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@SessionAttributes("username")
 public class LogController {
 
-    @GetMapping("/")
+    protected User user;
+
+    @GetMapping("/login")
     public String showLoginForm() {
-        return "index";
+         return "/index";
     }
 
-    @GetMapping("/index")
+    @GetMapping ("/index")
     public String authenticate(@RequestParam("username") String username, HttpSession session) {
         if (username != null && !username.isEmpty()) {
             session.setAttribute("username", username);
-            return "redirect:/quizz";
+            return "/quizz";
         } else {
-            return "redirect:/index";
+            return "/login";
         }
     }
 }

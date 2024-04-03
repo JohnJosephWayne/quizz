@@ -7,11 +7,11 @@
 </head>
 <body>
 <h1>Page de connexion</h1>
-<form  method="post">
+<form action="/quizz" method="post">
     <div>
-        <label for="username">Nom d'utilisateur :</label>
+        <label th:for="username">Nom d'utilisateur :</label>
         <br>
-        <input type="text" id="username" name="username" placeholder="your name" th:required>
+        <input type="text" th:id="username" name="username" placeholder="your name">
     </div>
     <br>
     <div>

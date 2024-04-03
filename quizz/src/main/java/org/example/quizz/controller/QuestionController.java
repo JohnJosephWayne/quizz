@@ -29,8 +29,7 @@ public class QuestionController {
             model.addAttribute("questions");
         } catch (IOException e) {
             e.printStackTrace();
-            // Handle exception
         }
-        return "quizz";
+        return "/quizz";
     }
 }
