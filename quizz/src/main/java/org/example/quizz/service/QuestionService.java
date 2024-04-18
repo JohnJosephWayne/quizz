@@ -6,15 +6,24 @@ import org.example.quizz.model.Question;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Service
 public class QuestionService {
 
+    private final Resource resourceFile;
+
+    public QuestionService() {
+        this.resourceFile = new ClassPathResource("./templates/question.json");
+    }
+
     public List<Question> getQuestions() throws IOException {
-        Resource resourceFile = new ClassPathResource("C:\\Users\\user\\IdeaProjects\\quizz\\quizz\\src\\main\\resources\\templates\\json\\question.json");
         ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper.readValue(resourceFile.getInputStream(), new TypeReference<>() {});
+        try (InputStream inputStream = resourceFile.getInputStream()) {
+            return objectMapper.readValue(inputStream, new TypeReference<>() {});
+        }
     }
 }

@@ -9,11 +9,8 @@ import java.util.List;
 @Setter
 public class Question {
     private int id;
-    private String type;
-    private String difficulty;
-    private String category;
-    private String question;
-    private String correct_answer;
-    private List<String> incorrect_answers;
+    private String text;
+    private List<String> correctAnswer;
+    private List<String> incorrectAnswers;
 
 }
