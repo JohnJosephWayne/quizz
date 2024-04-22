@@ -71,37 +71,32 @@ public class LogController {
         }
         return "quizz";
     }
-    @GetMapping("/evaluate")
-    public String evaluateAnswers(@RequestParam List<String> answers, HttpSession session) {
-        if (answers == null || answers.isEmpty()) {
-            // Handle case where no answers were selected
-            return "quizz";
-        }
-
-        List<Question> questions = (List<Question>) session.getAttribute("questions");
-        int score = 0;
-
-        for (int i = 0; i < answers.size(); i++) {
-            Question question = questions.get(i);
-            String selectedAnswer = answers.get(i);
-
-            if (selectedAnswer.equals(question.getCorrectAnswer())) {
-                score++;
-            }
-        }
-
-        session.setAttribute("score", score);
-        return "end";
-    }
+//    @GetMapping("/evaluate")
+//    public String evaluateAnswers(@RequestParam List<String> answers, HttpSession session) {
+//        if (answers == null || answers.isEmpty()) {
+//            return "quizz";
+//        }
+//
+//        List<Question> questions = (List<Question>)session.getAttribute("questions");
+//        int score = 0;
+//
+//        for (int i = 0; i < answers.size(); i++) {
+//            Question question = questions.get(i);
+//            String selectedAnswer = answers.get(i);
+//
+//            if (selectedAnswer.equals(question.getCorrectAnswer())) {
+//                score++;
+//            }
+//        }
+//
+//        session.setAttribute("score", score);
+//        return "end";
+//    }
 
     @GetMapping("/end")
     public String end(HttpSession session, Model model) {
         Object username = session.getAttribute("username");
         Object score = session.getAttribute("score");
-
-        if (username == null || score == null) {
-            return "redirect:/accueil";
-        }
 
         session.removeAttribute("username");
         session.removeAttribute("questions");
@@ -111,7 +106,6 @@ public class LogController {
         model.addAttribute("score", score);
 
         return "end";
-
     }
 }
 

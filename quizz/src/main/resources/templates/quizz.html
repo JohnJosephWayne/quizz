@@ -32,7 +32,7 @@
 
         <p style="color: #c99d5a; text-align: center" th:text="|Bonsoir ${username}|"></p>
 
-        <form th:action="@{evaluate}" method="get">
+        <form th:action="@{end}" method="get">
             <fieldset style="margin: 10px auto; background-color: #044060; color: #c99d5a; width: 80%">
                 <h3 style="text-align: center">Zé PARTi</h3>
 
@@ -53,12 +53,10 @@
                 </div>
 
                 <div style="display: flex;">
-                    <button class="button-hover" type="submit">Valider</button>
+                    <button class="button-hover" th:type="submit">Valider</button>
                 </div>
             </fieldset>
         </form>
-
-
     </main>
 
     <!-- FOOTER -->

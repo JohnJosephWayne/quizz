@@ -10,13 +10,13 @@ public class QuizzService {
 
     private List<Answer> answers;
 
-    public String calculateScore() {
+    public int calculateScore() {
         int score = 0;
         for (Answer answer : answers) {
             if (answer.isSelected()) { // If the answer is correct
                 score++; // Increment the score
             }
         }
-        return "score";
+        return score;
     }
 }
