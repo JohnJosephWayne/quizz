@@ -5,59 +5,67 @@
     <meta http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questions pour un champignon</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <script src="/scripts/config.js" defer></script>
-    <script src="/scripts/script.js" defer></script>
-    <script src="/scripts/main.js" defer></script>
+    <style>
+        .button-hover {
+            padding: 5px;
+            color: #c99d5a;
+            background: black;
+            border: 1px solid whitesmoke;
+            border-radius: 8px;
+            margin: 10px auto;
+        }
+        button:hover {
+            background-color: darkslategray;
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
     <header>
-        <h1>Questions pour un champignon</h1>
-        <h2>L'application pour apprendre plus vite</h2>
+        <h1 style="text-align: center">Questions pour un champignon</h1>
+        <h2 style="text-align: center">L'application pour apprendre plus vite</h2>
     </header>
     <!-- MAIN -->
     <main>
-        <div>
-            <span>Bonjour</span>
-        </div>
-        <div class="zoneQuestion">
-            Questions
-        </div>
 
-        <div class="zoneReponse">
-                <div class="optionReponse">
-                <p>Choisissez votre réponse.</p>
-                <br>
-                <input type="radio" name="optionSource" id="reponse1" value="1">
-                <label for="reponse1">Phrases</label>
-                <br>
-                <input type="radio" name="optionSource" id="reponse2" value="2">
-                <label for="reponse2">Phrases</label>
-                <br>
-                <input type="radio" name="optionSource" id="reponse3" value="3">
-                <label for="reponse3">Phrases</label>
-                <br>
-                <input type="radio" name="optionSource" id="reponse4" value="4">
-                <label for="reponse4">Phrases</label>
-            </div>
-        </div>
+        <h2 style="color: #c99d5a; text-align: center">Welcome to the jungle</h2>
 
-        <div>
-            <button id="btnValiderReponse">Valider</button>
-        </div>
+        <p style="color: #c99d5a; text-align: center" th:text="|Bonsoir ${username}|"></p>
 
-        <div class="zoneScore">
-            Votre score : <span>0</span>
-        </div>
-        
+        <form th:action="@{evaluate}" method="get">
+            <fieldset style="margin: 10px auto; background-color: #044060; color: #c99d5a; width: 80%">
+                <h3 style="text-align: center">Zé PARTi</h3>
+
+                <div style="display: flex; flex-direction: column" th:each="question, questionIndex : ${questions}">
+                    <p style="margin: 10px auto" th:text="${question.text}"></p>
+                    <ul style="list-style: none; margin: 10px auto;">
+                        <!-- Display correct answer -->
+                        <li style="margin: 10px auto;">
+                            <input style="display: inline-flex; list-style: none; padding: 2px" type="radio" th:value="${question.correctAnswer}" id="'correctAnswer_' + ${questionIndex.index}"/>
+                            <label for="'correctAnswer_' + ${questionIndex.index}" th:text="${question.correctAnswer}"></label>
+                        </li>
+                        <!-- Display incorrect answers -->
+                        <li style="margin: 10px auto;" th:each="answer : ${question.incorrectAnswers}">
+                            <input style="display: inline-flex; list-style: none; padding: 2px" type="radio" th:value="${answer}" id="'incorrectAnswer_' + ${questionIndex.index}"/>
+                            <label for="'incorrectAnswer_' + ${questionIndex.index}" th:text="${answer}"></label>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="display: flex;">
+                    <button class="button-hover" type="submit">Valider</button>
+                </div>
+            </fieldset>
+        </form>
+
+
     </main>
 
     <!-- FOOTER -->
     <footer>
-        @Copyright : thomthom 2024
+        <div style="display: flex">
+        <p style="margin: 20px auto">@Copyright : thomthom 2024</p>
+        </div>
     </footer>
 </body>
 </html>

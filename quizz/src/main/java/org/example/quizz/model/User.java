@@ -10,5 +10,4 @@ import java.util.ArrayList;
 @Setter
 public class User {
     protected String username;
-    protected ArrayList<Question> questionList;
 }

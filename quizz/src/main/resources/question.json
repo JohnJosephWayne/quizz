@@ -1,0 +1,96 @@
+[{
+  "id": 1,
+  "text": "What is the most preferred image format used for logos in the Wikimedia database?",
+  "correctAnswer": ".svg",
+  "incorrectAnswers": [
+  ".png",
+  ".jpeg",
+  ".gif"
+  ]
+},
+{
+  "id": 2,
+  "text": "The Windows 7 operating system has six main editions.",
+  "correctAnswer": "True",
+  "incorrectAnswers": [
+  "False"
+  ]
+},
+{
+  "id": 3,
+  "text": "How long is an IPv6 address?",
+  "correctAnswer": "128 bits",
+  "incorrectAnswers": [
+  "32 bits",
+  "64 bits",
+  "128 bytes"
+  ]
+},
+{
+  "id": 4,
+  "text": "According to the International System of Units, how many bytes are in a kilobyte of RAM?",
+  "correctAnswer": "1000",
+  "incorrectAnswers": [
+  "512",
+  "1024",
+  "500"
+  ]
+},
+{
+  "id": 5,
+  "text": "What does the computer software acronym JVM stand for?",
+  "correctAnswer": "Java Virtual Machine",
+  "incorrectAnswers": [
+  "Java Vendor Machine",
+  "Java Visual Machine",
+  "Just Virtual Machine"
+  ]
+},
+{
+  "id": 6,
+  "text": "The numbering system with a radix of 16 is more commonly referred to as ",
+  "correctAnswer": "Hexidecimal",
+  "incorrectAnswers": [
+  "Binary",
+  "Duodecimal",
+  "Octal"
+  ]
+},
+{
+  "id": 7,
+  "text": "What does the &quot;MP&quot; stand for in MP3?",
+  "correctAnswer": "Moving Picture",
+  "incorrectAnswers": [
+  "Music Player",
+  "Multi Pass",
+  "Micro Point"
+  ]
+},
+{
+  "id": 8,
+  "text": "Which computer hardware device provides an interface for all other connected devices to communicate?",
+  "correctAnswer": "Motherboard",
+  "incorrectAnswers": [
+  "Central Processing Unit",
+  "Hard Disk Drive",
+  "Random Access Memory"
+  ]
+},
+{
+  "id": 9,
+  "text": "Linus Torvalds created Linux and Git.",
+  "correctAnswer": "True",
+  "incorrectAnswers": [
+  "False"
+  ]
+},
+{
+  "id": 10,
+  "text": "In &quot;Hexadecimal&quot;, what color would be displayed from the color code? &quot;#00FF00&quot;?",
+  "correctAnswer": "Green",
+  "incorrectAnswers": [
+  "Red",
+  "Blue",
+  "Yellow"
+  ]
+}]

@@ -6,17 +6,17 @@
     <title>Page de connexion</title>
 </head>
 <body>
-<h1>Page de connexion</h1>
-<form action="/quizz" method="post">
-    <div>
-        <label th:for="username">Nom d'utilisateur :</label>
+    <h1>Page de connexion</h1>
+    <form th:action="@{quizz}" method="get">
+        <div>
+            <label th:for="username">Nom d'utilisateur :</label>
+            <br>
+            <input type="text" th:id="username" th:name="username" placeholder="your name">
+        </div>
         <br>
-        <input type="text" th:id="username" name="username" placeholder="your name">
-    </div>
-    <br>
-    <div>
-        <button type="submit">Connexion</button>
-    </div>
-</form>
+        <div>
+            <button type="submit">Connexion</button>
+        </div>
+    </form>
 </body>
 </html>

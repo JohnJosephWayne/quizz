@@ -10,7 +10,7 @@ import java.util.List;
 public class Question {
     private int id;
     private String text;
-    private List<String> correctAnswer;
+    private String correctAnswer;
     private List<String> incorrectAnswers;
 
 }

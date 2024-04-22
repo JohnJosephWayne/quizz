@@ -9,6 +9,8 @@ public class Answer {
     private String text;
     private boolean correct;
 
+    int score = 0;
+
     public Answer(String text, boolean correct) {
         this.text = text;
         this.correct = correct;

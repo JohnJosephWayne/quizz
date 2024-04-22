@@ -17,7 +17,7 @@ public class QuestionService {
     private final Resource resourceFile;
 
     public QuestionService() {
-        this.resourceFile = new ClassPathResource("./templates/question.json");
+        this.resourceFile = new ClassPathResource("question.json");
     }
 
     public List<Question> getQuestions() throws IOException {
